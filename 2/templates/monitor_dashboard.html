@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BreachGuard // Live Monitor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="scan-overlay" aria-hidden="true"></div>
+
+  <header class="top-bar">
+    <div class="brand">
+      <span class="brand-mark">&gt;_</span>
+      <span class="brand-name">BREACH<span class="accent-cyan">GUARD</span></span>
+    </div>
+    <div class="top-status">
+      <span class="dot dot-live" id="conn-dot"></span>
+      <span id="conn-text">LIVE MONITOR</span>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- EMAILS BOX -->
+    <section class="box" data-box="email">
+      <div class="box-head">
+        <h2>EMAILS</h2>
+        <span class="box-sub">2 slots · 30s default interval</span>
+      </div>
+      <div class="slots">
+        <article class="slot" data-slot-type="email" data-slot-index="0">
+          <div class="slot-head">
+            <span class="slot-label">SLOT 00</span>
+            <span class="status-pill" data-role="status">IDLE</span>
+          </div>
+
+          <div class="slot-idle" data-role="idle-form">
+            <input type="text" placeholder="name@example.com" data-role="value-input" autocomplete="off" spellcheck="false">
+            <button class="btn btn-start" data-role="start-btn">START</button>
+          </div>
+
+          <div class="slot-active" data-role="active-view" hidden>
+            <div class="ring-wrap">
+              <div class="ring" data-role="ring">
+                <span class="ring-text" data-role="ring-text">--</span>
+              </div>
+            </div>
+            <div class="active-info">
+              <div class="watch-value" data-role="watch-value"></div>
+              <div class="last-check" data-role="last-check">last check: —</div>
+              <button class="btn btn-stop" data-role="stop-btn">STOP</button>
+            </div>
+          </div>
+
+          <ul class="findings" data-role="findings"></ul>
+        </article>
+
+        <article class="slot" data-slot-type="email" data-slot-index="1">
+          <div class="slot-head">
+            <span class="slot-label">SLOT 01</span>
+            <span class="status-pill" data-role="status">IDLE</span>
+          </div>
+
+          <div class="slot-idle" data-role="idle-form">
+            <input type="text" placeholder="name@example.com" data-role="value-input" autocomplete="off" spellcheck="false">
+            <button class="btn btn-start" data-role="start-btn">START</button>
+          </div>
+
+          <div class="slot-active" data-role="active-view" hidden>
+            <div class="ring-wrap">
+              <div class="ring" data-role="ring">
+                <span class="ring-text" data-role="ring-text">--</span>
+              </div>
+            </div>
+            <div class="active-info">
+              <div class="watch-value" data-role="watch-value"></div>
+              <div class="last-check" data-role="last-check">last check: —</div>
+              <button class="btn btn-stop" data-role="stop-btn">STOP</button>
+            </div>
+          </div>
+
+          <ul class="findings" data-role="findings"></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- PASSWORDS BOX -->
+    <section class="box" data-box="password">
+      <div class="box-head">
+        <h2>PASSWORDS</h2>
+        <span class="box-sub">2 slots · 30s default interval</span>
+      </div>
+      <div class="slots">
+        <article class="slot" data-slot-type="password" data-slot-index="0">
+          <div class="slot-head">
+            <span class="slot-label">SLOT 00</span>
+            <span class="status-pill" data-role="status">IDLE</span>
+          </div>
+
+          <div class="slot-idle" data-role="idle-form">
+            <input type="password" placeholder="password to watch" data-role="value-input" autocomplete="off" spellcheck="false">
+            <button class="btn btn-start btn-amber" data-role="start-btn">START</button>
+          </div>
+
+          <div class="slot-active" data-role="active-view" hidden>
+            <div class="ring-wrap">
+              <div class="ring ring-amber" data-role="ring">
+                <span class="ring-text" data-role="ring-text">--</span>
+              </div>
+            </div>
+            <div class="active-info">
+              <div class="watch-value" data-role="watch-value"></div>
+              <div class="last-check" data-role="last-check">last check: —</div>
+              <button class="btn btn-stop" data-role="stop-btn">STOP</button>
+            </div>
+          </div>
+
+          <ul class="findings" data-role="findings"></ul>
+        </article>
+
+        <article class="slot" data-slot-type="password" data-slot-index="1">
+          <div class="slot-head">
+            <span class="slot-label">SLOT 01</span>
+            <span class="status-pill" data-role="status">IDLE</span>
+          </div>
+
+          <div class="slot-idle" data-role="idle-form">
+            <input type="password" placeholder="password to watch" data-role="value-input" autocomplete="off" spellcheck="false">
+            <button class="btn btn-start btn-amber" data-role="start-btn">START</button>
+          </div>
+
+          <div class="slot-active" data-role="active-view" hidden>
+            <div class="ring-wrap">
+              <div class="ring ring-amber" data-role="ring">
+                <span class="ring-text" data-role="ring-text">--</span>
+              </div>
+            </div>
+            <div class="active-info">
+              <div class="watch-value" data-role="watch-value"></div>
+              <div class="last-check" data-role="last-check">last check: —</div>
+              <button class="btn btn-stop" data-role="stop-btn">STOP</button>
+            </div>
+          </div>
+
+          <ul class="findings" data-role="findings"></ul>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot-note">
+    polling <code>/monitor/status</code> every 1s · findings are sourced from the local breach database only
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
